@@ -21,7 +21,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
         locationMgr = CLLocationManager()
         locationMgr?.requestWhenInUseAuthorization()
-//        locationMgr?.delegate = self
+        locationMgr?.delegate = self
+        
+        
+        locationMgr?.desiredAccuracy = kCLLocationAccuracyBest
+        locationMgr?.activityType = .automotiveNavigation
+        locationMgr?.startUpdatingLocation()
+        
+        mapView.userTrackingMode = .followWithHeading
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -56,7 +67,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    let coordinate = locations[0].coordinate }
+        let coordinate = locations[0].coordinate
+        
+    }
     
     
     @IBAction func longPressAction(_ sender: UILongPressGestureRecognizer) {
