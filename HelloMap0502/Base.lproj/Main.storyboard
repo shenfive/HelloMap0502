@@ -18,13 +18,31 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HPU-BP-7Z1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OZU-TP-sRE">
+                                <rect key="frame" x="60" y="94" width="294" height="32"/>
+                                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="d1Y-VX-9uh"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="標準"/>
+                                    <segment title="衛星"/>
+                                    <segment title="混合"/>
+                                </segments>
+                                <connections>
+                                    <action selector="setMapType:" destination="BYZ-38-t0r" eventType="valueChanged" id="448-bb-cQx"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HPU-BP-7Z1" secondAttribute="trailing" id="9bs-gG-Sh7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HPU-BP-7Z1" secondAttribute="bottom" id="TRd-Ed-P9G"/>
+                            <constraint firstItem="OZU-TP-sRE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Vph-lz-ZId"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OZU-TP-sRE" secondAttribute="trailing" constant="60" id="kkQ-Yk-ssJ"/>
                             <constraint firstItem="HPU-BP-7Z1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lIV-eN-sUe"/>
                             <constraint firstItem="HPU-BP-7Z1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lUq-Dd-bme"/>
+                            <constraint firstItem="OZU-TP-sRE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="rwE-Kh-wZc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -34,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="99"/>
+            <point key="canvasLocation" x="131.8840579710145" y="98.4375"/>
         </scene>
     </scenes>
 </document>

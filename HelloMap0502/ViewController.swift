@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
         // Do any additional setup after loading the view.
     }
 
@@ -27,19 +29,32 @@ class ViewController: UIViewController {
             let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
             
             
-            let xScale:CLLocationDegrees = 0.01
-            let yScale:CLLocationDegrees = 0.01
+            let xScale:CLLocationDegrees = 0.001
+            let yScale:CLLocationDegrees = 0.001
             let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: yScale, longitudeDelta: xScale)
-            let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
+                let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
+                
+                
+                self.mapView.setRegion(region, animated: true)
+                
+            }
             
             
-            self.mapView.setRegion(region, animated: true)
             
         }
         
+    @IBAction func setMapType(_ sender: UISegmentedControl) {
         
-        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .satellite
+        case 2:
+            mapView.mapType = .hybrid
+        default:
+            break
+        }
     }
-    
 }
 
