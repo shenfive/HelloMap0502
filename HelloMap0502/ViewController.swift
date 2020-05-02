@@ -18,5 +18,16 @@ class ViewController: UIViewController {
     }
 
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("hello 1")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3 ) {
+            print("Hello 2")
+        }
+        
+        
+        
+    }
+    
 }
 
