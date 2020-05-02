@@ -9,19 +9,19 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationMgr:CLLocationManager!
+    var locationMgr:CLLocationManager?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         locationMgr = CLLocationManager()
-        locationMgr.requestLocation()
-        
+        locationMgr?.requestWhenInUseAuthorization()
+//        locationMgr?.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3 ) {
-            
             if let location = self.locationMgr?.location?.coordinate{
                 let xScale:CLLocationDegrees = 0.01
                 let yScale:CLLocationDegrees = 0.01
@@ -54,6 +53,12 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    let coordinate = locations[0].coordinate }
+    
+    
     @IBAction func longPressAction(_ sender: UILongPressGestureRecognizer) {
         
         print("Long Pressed")
