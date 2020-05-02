@@ -63,5 +63,8 @@ class ViewController: UIViewController {
             break
         }
     }
+    @IBAction func longPressAction(_ sender: UILongPressGestureRecognizer) {
+        print("Long Pressed")
+    }
 }
 
