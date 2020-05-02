@@ -12,9 +12,15 @@ import MapKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    var locationMgr:CLLocationManager!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        locationMgr = CLLocationManager()
+        locationMgr.requestLocation()
         
         // Do any additional setup after loading the view.
     }
@@ -24,32 +30,17 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3 ) {
-            let latitude:CLLocationDegrees = 25.0438677
-            let longitude:CLLocationDegrees = 121.5127376
-            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
             
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            annotation.title = "譯智"
-            annotation.subtitle = "教育訓練中心"
-            self.mapView.addAnnotation(annotation)
-            
-            
-            
-            let xScale:CLLocationDegrees = 0.001
-            let yScale:CLLocationDegrees = 0.001
-            let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: yScale, longitudeDelta: xScale)
-            let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
-            
-            
-            self.mapView.setRegion(region, animated: true)
-            
+            if let location = self.locationMgr?.location?.coordinate{
+                let xScale:CLLocationDegrees = 0.01
+                let yScale:CLLocationDegrees = 0.01
+                let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: yScale,longitudeDelta: xScale)
+                let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
+                self.mapView.setRegion(region, animated: true)
             }
-            
-            
-            
         }
-        
+    }
+    
     @IBAction func setMapType(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
