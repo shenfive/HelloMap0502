@@ -24,19 +24,26 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3 ) {
-            let latitude:CLLocationDegrees = 25.0444032
-            let longitude:CLLocationDegrees = 121.5141468
+            let latitude:CLLocationDegrees = 25.0438677
+            let longitude:CLLocationDegrees = 121.5127376
             let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = "譯智"
+            annotation.subtitle = "教育訓練中心"
+            self.mapView.addAnnotation(annotation)
+            
             
             
             let xScale:CLLocationDegrees = 0.001
             let yScale:CLLocationDegrees = 0.001
             let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: yScale, longitudeDelta: xScale)
-                let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
-                
-                
-                self.mapView.setRegion(region, animated: true)
-                
+            let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
+            
+            
+            self.mapView.setRegion(region, animated: true)
+            
             }
             
             
