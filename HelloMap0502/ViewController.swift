@@ -20,9 +20,21 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("hello 1")
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 3 ) {
-            print("Hello 2")
+            let latitude:CLLocationDegrees = 25.0444032
+            let longitude:CLLocationDegrees = 121.5141468
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+            
+            
+            let xScale:CLLocationDegrees = 0.01
+            let yScale:CLLocationDegrees = 0.01
+            let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: yScale, longitudeDelta: xScale)
+            let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
+            
+            
+            self.mapView.setRegion(region, animated: true)
+            
         }
         
         
